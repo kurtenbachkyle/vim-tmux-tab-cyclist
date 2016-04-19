@@ -2,7 +2,7 @@ if exists("g:loaded_tmux_tab_cyclist") || &cp || v:version < 700
   finish
 endif
 
-let g:loaded_tmux_tab_cyclist = 0
+let g:loaded_tmux_tab_cyclist = 1
 
 function! s:IsLastTab(direction)
         let ct = tabpagenr()
@@ -37,16 +37,11 @@ function! s:StrippedSystemCall(system_cmd)
   return substitute(raw_result, '^\s*\(.\{-}\)\s*\n\?$', '\1', '')
 endfunction
 
-function! s:UseTmuxNavigatorMappings()
-  return !exists("g:tmux_navigator_no_mappings") || !g:tmux_navigator_no_mappings
-endfunction
-
 function! s:InTmuxSession()
   return $TMUX != ''
 endfunction
 
 function! s:TmuxSocket()
-  " The socket path is the first value in the comma-separated list of $TMUX.
   return split($TMUX, ',')[0]
 endfunction
 
