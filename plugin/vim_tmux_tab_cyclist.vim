@@ -11,6 +11,7 @@ function! s:IsLastTab(direction)
         else
                 let nt = tabpagenr("$")
         endif
+
         if ct == nt 
                 return 1
         else
@@ -63,7 +64,7 @@ function! s:NextTab(direction)
         elseif a:direction == 1 && lt == 0
                 tabn
         elseif a:direction == 0
-                let args = "select-window -l"
+                let args = "select-window -p"
                 silent call s:TmuxCommand(args)
         else
                 let args = "select-window -n"
