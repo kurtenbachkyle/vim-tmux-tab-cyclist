@@ -71,6 +71,6 @@ command! TmuxTabCyclistLeft call <SID>NextTab(0)
 command! TmuxTabCyclistRight call <SID>NextTab(1)
 
 if s:UseTmuxTabCyclistMappings()
-        map <silent> [5;5~ :TmuxTabCyclistLeft<CR>
-        map <silent> [6;5~ :TmuxTabCyclistRight<CR>
+        noremap <silent> [5;5~ :TmuxTabCyclistLeft<CR>
+        noremap <silent> [6;5~ :TmuxTabCyclistRight<CR>
 endif
