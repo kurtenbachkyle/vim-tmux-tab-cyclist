@@ -10,5 +10,22 @@ This plugin unifies navigation of vim tabs and tmux's windows.  When combined wi
 
 ##Installation
 ###Vim
+Installing with [Vundle](https://github.com/VundleVim/Vundle.vim):
+`Plugin 'kurtenbachkyle/vim-tmux-tab-cyclist'`
 
 ###Tmux
+I have the following in my ~/tmux.conf
+
+```
+#Navigate around vim tabs like tmux windows
+bind-key -n C-PageUp if-shell "$is_vim" "send-keys C-PageUp" "previous-window"
+bind-key -n C-PageDown if-shell "$is_vim" "send-keys C-PageDown" "next-window"
+bind-key C-p if-shell "$is_vim" "send-keys C-PageUp" "previous-window"
+bind-key C-n if-shell "$is_vim" "send-keys C-PageDown" "next-window"
+
+#Navigate just through tmux splits (on by default)
+bind-key p "previous-window"
+bind-key n "next-window"
+```
+
+With this I can use C-PageUp and C-Pagedown or bind-key C-p C-n to go between vim and tmux tabs.  If I want to skip over the vim tabs I can still use bind-key n or p to navigate just through tmux.
