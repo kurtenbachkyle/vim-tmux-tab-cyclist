@@ -17,6 +17,8 @@ Installing with [Vundle](https://github.com/VundleVim/Vundle.vim):
 I have the following in my ~/tmux.conf
 
 ```
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?|fzf)(diff)?$'"
 #Navigate around vim tabs like tmux windows
 bind-key -n C-PageUp if-shell "$is_vim" "send-keys C-PageUp" "previous-window"
 bind-key -n C-PageDown if-shell "$is_vim" "send-keys C-PageDown" "next-window"
